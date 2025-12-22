@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center mb-5 fw-bold">
+        🍴 Restaurant Menu
+    </h1>
+
+    {% for meal in meals %}
+        <h3 class="mt-4 mb-3 text-primary fw-semibold">
+            {{ meal.1 }}
+        </h3>
+
+        <div class="row">
+        {% for row in item_list %}
+            {% if row.meal_type == meal.0 %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100 border-0">
+
+                        <div class="card-body">
+                            {% if row.status == 0 %}
+                                <h5 class="card-title text-muted">
+                                    <del>{{ row.meal }}</del>
+                                    <span class="badge bg-danger ms-2">Out of Stock</span>
+                                </h5>
+                            {% else %}
+                                <h5 class="card-title fw-bold">
+                                    <a href="{% url 'menu_list' row.pk %}" class="text-decoration-none text-dark">
+                                        {{ row.meal }}
+                                    </a>
+                                </h5>
+                            {% endif %}
+
+                            <p class="card-text text-muted small">
+                                {{ row.description }}
+                            </p>
+                        </div>
+
+                        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success fs-6">
+                                ₹{{ row.price }}
+                            </span>
+
+                            <a href="{% url 'menu_list' row.pk %}" class="btn btn-sm btn-outline-primary">
+                                View
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

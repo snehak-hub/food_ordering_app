@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow border-0">
+                <div class="card-body p-4 text-center">
+
+                    <h2 class="fw-bold mb-3">About Our Restaurant 🍽️</h2>
+
+                    <p class="text-muted">
+                        We provide fresh, tasty, and affordable meals.
+                        Our goal is customer satisfaction and quality service.
+                    </p>
+
+                    <hr>
+
+                    <div class="row text-start">
+                        <div class="col-6">✔ Fresh Food</div>
+                        <div class="col-6">✔ Best Chefs</div>
+                        <div class="col-6">✔ Clean Kitchen</div>
+                        <div class="col-6">✔ Fast Service</div>
+                    </div>
+
+                    <a href="{% url 'home' %}" class="btn btn-dark mt-4">
+                        Back to Menu
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
